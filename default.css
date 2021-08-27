@@ -220,24 +220,24 @@ h6 { font-size: 16px;}
     padding-top: 50px;
     padding-bottom: 50px;
 }
-
+/* 
 #preview-shadow{
     background-color: var(--previewShadow);
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     padding-left: 30px;
     padding-top: 30px;
-}
+} */
 
 #preview{
     width: 300px;
-    border: 1.5px solid #17a2b8;
-    background-color: var(--previewBg);
+    /* border: 1.5px solid #17a2b8; */
+    background-color: var(--previewShadow);
     padding: 15px;
     position: relative;
 }
 
-.corner{
+/* .corner{
     width: 7px;
     height: 7px;
     border-radius: 50%;
@@ -264,7 +264,7 @@ h6 { font-size: 16px;}
 #corner-br{
     bottom: -5px;
     right: -5px;
-}
+} */
 
 .about-wrapper{
     display: grid;
