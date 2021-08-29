@@ -39,8 +39,9 @@ p, li, span, label, input, textarea{
 
 a{
     text-decoration: underline;
+    font-family: 'Roboto Mono', monospace;
     color: var(--mainText);
-    font-size: larger;
+    font-size: 16px;
 }
 
 ul{
@@ -60,6 +61,7 @@ h6 { font-size: 16px;}
     background-color: var(--mainColor);
     border-bottom:1px solid var(--borderColor);
     overflow: auto;
+    
 }
 
 .s2{
@@ -78,6 +80,21 @@ h6 { font-size: 16px;}
     text-align: center;
     align-content: center;
     min-height: 10em;
+}
+
+#more {display: none;}
+
+#myBtn {
+    background-color: var(--secondaryColor);
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+    color: var(--mainText);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .intro-wrapper{
@@ -370,6 +387,7 @@ h6 { font-size: 16px;}
 
 #submit-btn{
     margin-top: 10px;
+    font-family: 'Roboto Mono', monospace;
 	width: 100%;
 	padding-top: 10px;
 	padding-bottom:10px; 
