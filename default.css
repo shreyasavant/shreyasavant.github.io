@@ -91,10 +91,17 @@ h6 { font-size: 16px;}
     color: var(--mainText);
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: inline;
     font-size: 14px;
-    margin: 4px 2px;
+    padding: 0px;
+    margin: 0px;
     cursor: pointer;
+}
+
+#job-content{
+    padding: 0px;
+    margin: 0px;
+    display: inline;
 }
 
 .intro-wrapper{
