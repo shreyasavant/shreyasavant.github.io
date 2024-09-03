@@ -1,4 +1,4 @@
-console.log('Its working')
+console.log('I love js!!!')
 
 let theme = localStorage.getItem('theme')
 
