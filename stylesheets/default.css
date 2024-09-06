@@ -35,8 +35,12 @@ body *{
 
 h1, h2, h3, h4, h5, h6, strong{
     color: var(--mainText);
-    font-weight: 500;
+    font-weight: bold;
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
+
+h4 a {
+    font-size: inherit;
 }
 
 p, li, span, label, input, textarea{
