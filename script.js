@@ -1,5 +1,3 @@
-console.log('I love js!!!')
-
 let theme = localStorage.getItem('theme')
 
 if (theme == null){
@@ -36,18 +34,45 @@ function setTheme(mode){
     localStorage.setItem('theme', mode)
 }
 
-function myFunction() {
-    var dots = document.getElementById("dots");
-    var moreText = document.getElementById("more");
-    var btnText = document.getElementById("myBtn");
+// function myFunction() {
+//     var dots = document.getElementById("dots");
+//     var moreText = document.getElementById("more");
+//     var btnText = document.getElementById("myBtn");
   
+//     if (dots.style.display === "none") {
+//       dots.style.display = "inline";
+//       btnText.innerHTML = "Read more";
+//       moreText.style.display = "none";
+//     } else {
+//       dots.style.display = "none";
+//       btnText.innerHTML = "Read less";
+//       moreText.style.display = "inline";
+//     }
+//   }
+
+
+// Select all the "Read More" buttons
+const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+// Add click event listeners to each button
+readMoreButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Get the parent job section
+    const jobPreview = button.closest('.job-preview');
+
+    // Find the corresponding dots and more content within the same section
+    const dots = jobPreview.querySelector('.dots');
+    const moreContent = jobPreview.querySelector('.more');
+
+    // Toggle visibility of dots and extra content
     if (dots.style.display === "none") {
       dots.style.display = "inline";
-      btnText.innerHTML = "Read more";
-      moreText.style.display = "none";
+      moreContent.style.display = "none";
+      button.textContent = "Read more";
     } else {
       dots.style.display = "none";
-      btnText.innerHTML = "Read less";
-      moreText.style.display = "inline";
+      moreContent.style.display = "inline";
+      button.textContent = "Read less";
     }
-  }
+  });
+});

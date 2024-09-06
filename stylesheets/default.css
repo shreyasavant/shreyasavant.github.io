@@ -15,6 +15,14 @@
 	--buttonColor:black;
 }
 
+.hidden-content {
+    display: none;
+  }
+  
+.dots {
+    display: inline;
+  }
+
 html, body{
     padding: 0;
     margin: 0;
@@ -34,6 +42,7 @@ h1, h2, h3, h4, h5, h6, strong{
 p, li, span, label, input, textarea{
     color: var(--secondaryText);
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    text-align: justify;
 
 }
 
@@ -452,3 +461,15 @@ h6 { font-size: 16px;}
 		left: -400%;
 	}
 }
+
+.read-more-btn {
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    background: none; 
+    border: none;
+    color: #000000;
+    font-weight: bold; 
+    text-decoration: underline; 
+    cursor: pointer;
+    padding: 0; 
+    margin: 0; 
+  }
