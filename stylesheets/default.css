@@ -28,18 +28,18 @@ body *{
 h1, h2, h3, h4, h5, h6, strong{
     color: var(--mainText);
     font-weight: 500;
-    font-family: 'Russo One', sans-serif;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 }
 
 p, li, span, label, input, textarea{
     color: var(--secondaryText);
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 
 }
 
 a{
     text-decoration: underline;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
     color: var(--mainText);
     font-size: 16px;
 }
@@ -86,7 +86,7 @@ h6 { font-size: 16px;}
 
 #myBtn {
     background-color: var(--secondaryColor);
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
     border: none;
     color: var(--mainText);
     text-align: center;
@@ -394,7 +394,7 @@ h6 { font-size: 16px;}
 
 #submit-btn{
     margin-top: 10px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	width: 100%;
 	padding-top: 10px;
 	padding-bottom:10px; 
