@@ -68,6 +68,7 @@ h3 { font-size: 28px;}
 h4 { font-size: 24px;}
 h5 { font-size: 20px;}
 h6 { font-size: 16px;}
+strong { font-size: 14px;}
 
 
 .s1{
@@ -186,7 +187,7 @@ h6 { font-size: 16px;}
 
 .left-column{
     grid-area: left-column;
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 50px;
 }
 
@@ -334,7 +335,6 @@ h6 { font-size: 16px;}
     padding: 15px;
 }
 .post-title{
-    color: var(--secondaryText);
     margin: 0;
 }
 
@@ -434,7 +434,7 @@ h6 { font-size: 16px;}
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
     background: none; 
     border: none;
-    color: #000000;
+    color: var(--secondaryText);
     font-weight: bold; 
     text-decoration: underline; 
     cursor: pointer;

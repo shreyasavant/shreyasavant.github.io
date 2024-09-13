@@ -58,7 +58,7 @@ const readMoreButtons = document.querySelectorAll('.read-more-btn');
 readMoreButtons.forEach(button => {
   button.addEventListener('click', function() {
     // Get the parent job section
-    const jobPreview = button.closest('.job-preview');
+    const jobPreview = button.closest('.post-preview');
 
     // Find the corresponding dots and more content within the same section
     const dots = jobPreview.querySelector('.dots');
