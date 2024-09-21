@@ -23,6 +23,8 @@
     display: inline;
   }
 
+   
+
 html, body{
     padding: 0;
     margin: 0;
@@ -36,7 +38,7 @@ body *{
 h1, h2, h3, h4, h5, h6, strong{
     color: var(--mainText); 
     font-weight: bold;
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
 }
 
 h4 a {
@@ -45,14 +47,14 @@ h4 a {
 
 p, li, span, label, input, textarea{
     color: var(--secondaryText);
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
     text-align: justify;
 
 }
 
 a{
     text-decoration: underline;
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
     color: var(--mainText);
     font-size: 16px;
 }
@@ -100,7 +102,7 @@ strong { font-size: 14px;}
 
 #myBtn {
     background-color: var(--secondaryColor);
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
     border: none;
     color: var(--mainText);
     text-align: center;
@@ -112,11 +114,6 @@ strong { font-size: 14px;}
     cursor: pointer;
 }
 
-#job-content{
-    padding: 0px;
-    margin: 0px;
-    display: inline;
-}
 
 .intro-wrapper{
     background-color: var(--secondaryColor);
@@ -294,6 +291,7 @@ strong { font-size: 14px;}
 	overflow: hidden;
 }
 
+
 #slider figure {
 	position: relative;
 	width: 500%;
@@ -371,7 +369,7 @@ strong { font-size: 14px;}
 
 #submit-btn{
     margin-top: 10px;
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
 	width: 100%;
 	padding-top: 10px;
 	padding-bottom:10px; 
@@ -431,7 +429,7 @@ strong { font-size: 14px;}
 }
 
 .read-more-btn {
-    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", monaco, "Bitstream Vera Sans Mono", monospace;
     background: none; 
     border: none;
     color: var(--secondaryText);
