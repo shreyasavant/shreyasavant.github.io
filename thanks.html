@@ -1,25 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Shreya Savant</title>
-        <meta name="viewport" content="width=device-width, 
-        initial-scale=1.0, maximum-scale=1, minimum-scale=1"/>
-        
-        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-        
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-    
-        <link rel="stylesheet" type="text/css" href="default.css">
-    
-        <link id="theme-style" rel="stylesheet" type="text/css" href="">
-    </head>
+<head>
+    <title>Thank You | Shreya Savant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+</head>
 <body>
-    <section class="s1">
-        <div class="main-container">
-            <div class="greeting-wrap">
-                <h1>Thanks for sending the message!</h1>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a class="logo-mark" href="index.html">SS</a>
+                <div>
+                    <p class="sidebar-name">Shreya Savant</p>
+                    <p class="sidebar-handle">@shreyasavant</p>
+                </div>
             </div>
-    
-    <script type="text/javascript" src="script.js"></script>
+            <div class="sidebar-profile">
+                <img src="images/profile/shreya.png" alt="Shreya Savant">
+                <p>AI researcher building reliable systems for energy infrastructure and dialogue understanding.</p>
+                <a class="btn ghost" target="_blank" href="https://github.com/shreyasavant">GitHub Profile</a>
+            </div>
+            <nav class="sidebar-nav">
+                <a class="sidebar-link" href="index.html">Overview</a>
+                <a class="sidebar-link" href="projects.html">Projects</a>
+                <a class="sidebar-link" href="research.html">Research</a>
+                <a class="sidebar-link" href="about.html">Experience</a>
+                <a class="sidebar-link" href="advocacy.html">Advocacy</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme">☀️</button>
+            </div>
+
+            <section class="section">
+                <div class="main-container" style="text-align: center; padding: 80px 20px;">
+                    <div class="reveal">
+                        <h1 style="font-size: 48px; margin-bottom: 20px;">✓ Message Sent!</h1>
+                        <p class="lead" style="margin-bottom: 40px;">
+                            Thank you for reaching out. I'll get back to you as soon as possible.
+                        </p>
+                        <div class="hero-actions" style="justify-content: center;">
+                            <a class="btn primary" href="index.html">Back to Home</a>
+                            <a class="btn ghost" href="index.html#contact">Send Another</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <div class="main-container footer-inner">
+                    <span>&copy; 2026 Shreya Savant</span>
+                    <div class="footer-links">
+                        <a href="about.html">Experience</a>
+                        <a href="projects.html">Projects</a>
+                        <a href="research.html">Research</a>
+                        <a href="advocacy.html">Advocacy</a>
+                        <a target="_blank" href="https://github.com/shreyasavant">GitHub</a>
+                        <a target="_blank" href="https://scholar.google.com/citations?user=j0VrspsAAAAJ&hl=en">Scholar</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- VanillaTilt -->
+    <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
