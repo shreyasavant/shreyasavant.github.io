@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Thank You | Shreya Savant</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            const t = localStorage.getItem("theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+            document.documentElement.setAttribute("data-theme", t);
+            document.documentElement.classList.add("is-loading");
+        })();
+    </script>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://api.github.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/default.css">
 </head>
+
 <body>
     <div class="app-shell">
         <aside class="sidebar">
@@ -20,7 +33,7 @@
                 </div>
             </div>
             <div class="sidebar-profile">
-                <img src="images/profile/shreya.png" alt="Shreya Savant">
+                <img src="images/profile/shreya.jpg" alt="Shreya Savant">
                 <p>AI researcher building reliable systems for energy infrastructure and dialogue understanding.</p>
                 <a class="btn ghost" target="_blank" href="https://github.com/shreyasavant">GitHub Profile</a>
             </div>
@@ -62,7 +75,8 @@
                         <a href="research.html">Research</a>
                         <a href="advocacy.html">Advocacy</a>
                         <a target="_blank" href="https://github.com/shreyasavant">GitHub</a>
-                        <a target="_blank" href="https://scholar.google.com/citations?user=j0VrspsAAAAJ&hl=en">Scholar</a>
+                        <a target="_blank"
+                            href="https://scholar.google.com/citations?user=j0VrspsAAAAJ&hl=en">Scholar</a>
                     </div>
                 </div>
             </footer>
@@ -78,4 +92,5 @@
     <script src="https://unpkg.com/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

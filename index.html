@@ -4,6 +4,13 @@
 <head>
     <title>Shreya Savant | AI Researcher & Systems Engineer</title>
     <meta charset="UTF-8">
+    <script>
+        (function () {
+            const t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.add('is-loading');
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="AI researcher specializing in multi-agent systems, LLMs, and energy grid optimization. PhD candidate at Concordia University.">
@@ -249,21 +256,21 @@
                             </div>
                         </div>
                         <div class="gallery-item reveal" data-category="work">
-                            <img src="images/work/innovation-lab-presentation.png" alt="Innovation Lab Presentation"
+                            <img src="images/work/innovation-lab-presentation.jpg" alt="Innovation Lab Presentation"
                                 loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="gallery-label">Lab Presentation</span>
                             </div>
                         </div>
                         <div class="gallery-item reveal" data-category="work">
-                            <img src="images/work/innovation-lab-workshop.png" alt="Innovation Lab Workshop"
+                            <img src="images/work/innovation-lab-workshop.jpg" alt="Innovation Lab Workshop"
                                 loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="gallery-label">Lab Workshop</span>
                             </div>
                         </div>
                         <div class="gallery-item reveal" data-category="work">
-                            <img src="images/work/innovation-lab-project.png" alt="Innovation Lab Project"
+                            <img src="images/work/innovation-lab-project.jpg" alt="Innovation Lab Project"
                                 loading="lazy">
                             <div class="gallery-overlay">
                                 <span class="gallery-label">Lab Project</span>

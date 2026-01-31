@@ -34,9 +34,10 @@
     --radius-lg: 12px;
     --radius-xl: 16px;
 
-    --transition-fast: 0.15s ease;
-    --transition-base: 0.25s ease;
-    --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-premium: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme="light"] {
@@ -87,6 +88,29 @@ body {
     color: var(--text-primary);
     background: var(--bg-primary);
     overflow-x: hidden;
+    /* Smooth theme transitions */
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* FOUC Prevention & Page Transitions */
+html.is-loading body {
+    opacity: 0;
+}
+
+body.is-navigating {
+    pointer-events: none;
+}
+
+body.is-navigating .app-shell {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app-shell {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 ::selection {
@@ -393,8 +417,6 @@ p {
     margin: 0 24px;
     padding: 40px;
     border: 1px solid var(--border);
-    content-visibility: auto;
-    contain-intrinsic-size: 0 400px;
 }
 
 .section-head {
@@ -635,7 +657,6 @@ p {
     display: flex;
     flex-direction: column;
     transition: all var(--transition-slow);
-    contain: layout style;
 }
 
 .card:hover {
@@ -1146,9 +1167,10 @@ textarea.input-field {
 /* --- Reveal Animations --- */
 .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(16px);
+    transition: opacity var(--transition-slow),
+        transform var(--transition-slow);
+    will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -1508,8 +1530,6 @@ textarea.input-field {
 .photo-gallery {
     columns: 4;
     column-gap: 16px;
-    content-visibility: auto;
-    contain-intrinsic-size: 0 1000px;
 }
 
 .gallery-item {

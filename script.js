@@ -1,42 +1,42 @@
-/**
- * Shreya Savant Portfolio
- * Enhanced JavaScript for animations and interactions
- */
+let revealObserver;
 
-// ============================================
-// Reveal Animations with Intersection Observer
-// ============================================
 const initRevealAnimations = () => {
   const revealItems = document.querySelectorAll('.reveal');
 
-  if (!revealItems.length) return;
+  if (!revealItems.length && !revealObserver) return;
 
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Add small delay for staggered effect within grids
-          const parent = entry.target.parentElement;
-          if (parent && (parent.classList.contains('card-grid') ||
-            parent.classList.contains('impact-grid') ||
-            parent.classList.contains('skills-grid'))) {
-            const siblings = Array.from(parent.querySelectorAll('.reveal'));
-            const index = siblings.indexOf(entry.target);
-            entry.target.style.transitionDelay = `${index * 0.08}s`;
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Add small delay for staggered effect within grids
+            const parent = entry.target.parentElement;
+            if (parent && (parent.classList.contains('card-grid') ||
+              parent.classList.contains('impact-grid') ||
+              parent.classList.contains('skills-grid'))) {
+              const siblings = Array.from(parent.querySelectorAll('.reveal'));
+              const index = siblings.indexOf(entry.target);
+              entry.target.style.transitionDelay = `${index * 0.08}s`;
+            }
+
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
           }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+  }
 
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+  revealItems.forEach((item) => {
+    if (!item.classList.contains('is-visible')) {
+      revealObserver.observe(item);
     }
-  );
-
-  revealItems.forEach((item) => revealObserver.observe(item));
+  });
 };
 
 // ============================================
@@ -230,11 +230,26 @@ const renderRepos = (repos, elements) => {
 
     elements.reposList.appendChild(card);
 
-    // Trigger reveal animation after DOM insertion
-    requestAnimationFrame(() => {
-      card.classList.add('is-visible');
-    });
+    // Observe the new card for reveal animation
+    if (revealObserver) {
+      revealObserver.observe(card);
+    }
   });
+
+  // Refresh ScrollTrigger and Tilt for new content
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
+  }
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.repo-card'), {
+      max: 4,
+      speed: 400,
+      glare: true,
+      'max-glare': 0.08,
+      scale: 1.02,
+      perspective: 1000
+    });
+  }
 };
 
 // ============================================
@@ -439,14 +454,15 @@ const initLenis = () => {
   if (typeof Lenis === 'undefined') return;
 
   lenis = new Lenis({
-    duration: 1.0,
+    duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
     wheelMultiplier: 1.0,
-    touchMultiplier: 1.5,
-    infinite: false
+    touchMultiplier: 1.2,
+    infinite: false,
+    lerp: 0.1
   });
 
   // Connect Lenis to GSAP ScrollTrigger if available
@@ -474,160 +490,8 @@ const initGSAPAnimations = () => {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero section entrance
-  const heroElements = document.querySelectorAll('.personal-hero h1, .personal-hero .subtitle, .personal-hero .hero-links');
-  if (heroElements.length) {
-    gsap.from(heroElements, {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out'
-    });
-  }
+  // Featured advocacy card is handled by the .reveal CSS/IntersectionObserver system
 
-  // Cards with staggered reveal on scroll
-  const cardGrids = document.querySelectorAll('.card-grid, .impact-grid, .skills-grid, .quick-links-grid');
-  cardGrids.forEach((grid) => {
-    const cards = grid.querySelectorAll('.card, .impact-card, .quick-link-card, .skills-card');
-    if (cards.length) {
-      gsap.from(cards, {
-        scrollTrigger: {
-          trigger: grid,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power2.out'
-      });
-    }
-  });
-
-  // Section headers slide in
-  const sectionHeaders = document.querySelectorAll('.section-header');
-  sectionHeaders.forEach((header) => {
-    gsap.from(header, {
-      scrollTrigger: {
-        trigger: header,
-        start: 'top 90%',
-        toggleActions: 'play none none none'
-      },
-      x: -30,
-      opacity: 0,
-      duration: 0.6,
-      ease: 'power2.out'
-    });
-  });
-
-  // Timeline items stagger
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  if (timelineItems.length) {
-    gsap.from(timelineItems, {
-      scrollTrigger: {
-        trigger: timelineItems[0],
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      },
-      x: -30,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.12,
-      ease: 'power2.out'
-    });
-  }
-
-  // Gallery items cascade
-  const galleryItems = document.querySelectorAll('.photo-gallery .gallery-item');
-  if (galleryItems.length) {
-    gsap.fromTo(galleryItems,
-      {
-        y: 20,
-        opacity: 0
-      },
-      {
-        scrollTrigger: {
-          trigger: '.photo-gallery',
-          start: 'top 95%',
-          toggleActions: 'play none none none'
-        },
-        y: 0,
-        opacity: 1,
-        duration: 0.35,
-        stagger: 0.03,
-        ease: 'power2.out',
-        clearProps: 'all'
-      }
-    );
-  }
-
-  // Publication items
-  const pubItems = document.querySelectorAll('.publication-item');
-  if (pubItems.length) {
-    gsap.from(pubItems, {
-      scrollTrigger: {
-        trigger: pubItems[0],
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.1,
-      ease: 'power2.out'
-    });
-  }
-
-  // Repo cards
-  const repoCards = document.querySelectorAll('.repo-card');
-  if (repoCards.length) {
-    gsap.from(repoCards, {
-      scrollTrigger: {
-        trigger: repoCards[0]?.parentElement,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.08,
-      ease: 'power2.out'
-    });
-  }
-
-  // Contribution graph
-  const contribGraph = document.querySelector('.contribution-graph-wrapper');
-  if (contribGraph) {
-    gsap.from(contribGraph, {
-      scrollTrigger: {
-        trigger: contribGraph,
-        start: 'top 90%',
-        toggleActions: 'play none none none'
-      },
-      y: 20,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    });
-  }
-
-  // Featured advocacy card
-  const featuredAdvocacy = document.querySelector('.featured-advocacy');
-  if (featuredAdvocacy) {
-    gsap.from(featuredAdvocacy, {
-      scrollTrigger: {
-        trigger: featuredAdvocacy,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      },
-      y: 40,
-      opacity: 0,
-      duration: 0.7,
-      ease: 'power2.out'
-    });
-  }
 
   // Parallax effect for hero image
   const heroImage = document.querySelector('.hero-card img, .personal-hero img');
@@ -686,6 +550,34 @@ const initVanillaTilt = () => {
 };
 
 // ============================================
+// Page Transitions
+// ============================================
+const initPageTransitions = () => {
+  const links = document.querySelectorAll('a:not([target="_blank"]):not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"])');
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href || href.includes('javascript:')) return;
+
+      e.preventDefault();
+      document.body.classList.add('is-navigating');
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 400); // Wait for transition
+    });
+  });
+};
+
+const removeLoadingState = () => {
+  // Give a small buffer for critical styles to settle
+  setTimeout(() => {
+    document.documentElement.classList.remove('is-loading');
+  }, 100);
+};
+
+// ============================================
 // Initialize Everything
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -702,6 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initKeyboardNav();
   initAdvocacyImageSwap();
   initLightGallery();
+  initPageTransitions();
+  removeLoadingState();
 });
 
 // Handle page visibility for performance

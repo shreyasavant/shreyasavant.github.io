@@ -3,7 +3,13 @@
 <head>
     <title>Projects | Shreya Savant</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function() {
+            const t = localStorage.getItem("theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+            document.documentElement.setAttribute("data-theme", t);
+            document.documentElement.classList.add("is-loading");
+        })();
+    </script>    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Research projects and production systems in AI, NLP, and machine learning by Shreya Savant.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
