@@ -202,6 +202,7 @@ const renderRepos = (repos, elements) => {
   filtered.forEach((repo, index) => {
     const card = document.createElement('article');
     card.className = 'repo-card reveal';
+    card.setAttribute('role', 'listitem');
     card.style.transitionDelay = `${index * 0.08}s`;
 
     const description = repo.description
@@ -216,17 +217,43 @@ const renderRepos = (repos, elements) => {
       year: 'numeric'
     });
 
-    card.innerHTML = `
-      <div class="repo-header">
-        <a class="repo-title" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
-        ${repo.language ? `<span class="repo-lang">${repo.language}</span>` : ''}
-      </div>
-      <p class="repo-desc">${description}</p>
-      <div class="repo-meta">
-        <span>★ ${repo.stargazers_count}</span>
-        <span>Updated ${updatedDate}</span>
-      </div>
-    `;
+    // Build card using DOM methods to prevent XSS
+    const header = document.createElement('div');
+    header.className = 'repo-header';
+
+    const titleLink = document.createElement('a');
+    titleLink.className = 'repo-title';
+    titleLink.href = repo.html_url;
+    titleLink.target = '_blank';
+    titleLink.rel = 'noopener';
+    titleLink.textContent = repo.name;
+    header.appendChild(titleLink);
+
+    if (repo.language) {
+      const langSpan = document.createElement('span');
+      langSpan.className = 'repo-lang';
+      langSpan.textContent = repo.language;
+      header.appendChild(langSpan);
+    }
+
+    const descP = document.createElement('p');
+    descP.className = 'repo-desc';
+    descP.textContent = description;
+
+    const meta = document.createElement('div');
+    meta.className = 'repo-meta';
+
+    const starsSpan = document.createElement('span');
+    starsSpan.textContent = `★ ${repo.stargazers_count}`;
+    meta.appendChild(starsSpan);
+
+    const updatedSpan = document.createElement('span');
+    updatedSpan.textContent = `Updated ${updatedDate}`;
+    meta.appendChild(updatedSpan);
+
+    card.appendChild(header);
+    card.appendChild(descP);
+    card.appendChild(meta);
 
     elements.reposList.appendChild(card);
 
